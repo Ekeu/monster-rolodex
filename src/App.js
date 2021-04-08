@@ -18,6 +18,8 @@ class App extends Component {
       .then((users) => this.setState({ monsters: users }));
   }
 
+  handleChange = (e) => this.setState({ searchField: e.target.value });
+
   render() {
     const { monsters, searchField } = this.state;
     const filteredMonsters = monsters.filter((monster) =>
@@ -27,13 +29,14 @@ class App extends Component {
       <>
         <div className='bg-white'>
           <div className='mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24'>
+            <h2 class='text-6xl text-center font-extrabold font-sedgwick text-red-800 tracking-tight sm:text-7xl'>
+              Monster Rolodex
+            </h2>
             <div class='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
               <div class='py-8 px-4 sm:px-10'>
                 <SearchBox
                   placeholder='Search monsters'
-                  handleChange={(e) =>
-                    this.setState({ searchField: e.target.value })
-                  }
+                  handleChange={this.handleChange}
                 />
               </div>
             </div>
